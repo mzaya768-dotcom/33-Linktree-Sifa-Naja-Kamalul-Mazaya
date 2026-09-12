@@ -1,0 +1,265 @@
+/* =============================================
+   LINKTREE ESTETIK — NAJA
+   Vibes: purple × blue galaxy aesthetic
+   ============================================= */
+
+/* ===== VARIABLES ===== */
+:root {
+    --bg:         #0f0c1a;
+    --surface:    rgba(255, 255, 255, 0.07);
+    --border:     rgba(160, 120, 255, 0.25);
+    --accent:     #a78bfa;
+    --accent-2:   #60a5fa;
+    --text:       #e8e0ff;
+    --text-muted: #9d8ec4;
+    --shadow:     rgba(120, 80, 220, 0.3);
+    --radius:     18px;
+    --glow:       rgba(139, 92, 246, 0.4);
+}
+
+/* ===== RESET ===== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== BODY ===== */
+body {
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    background-color: var(--bg);
+    background-image:
+        radial-gradient(ellipse 70% 60% at 15% 10%,  rgba(139, 92, 246, 0.28) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 55% at 88% 75%,  rgba(59, 130, 246, 0.25) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 50% 50%,  rgba(168, 85, 247, 0.12) 0%, transparent 70%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    overflow-x: hidden;
+    color: var(--text);
+}
+
+/* ===== FLOATING PARTICLES ===== */
+.particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.particles span {
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    opacity: 0;
+    animation: float-up linear infinite;
+}
+
+.particles span:nth-child(1) { width: 5px;  height: 5px;  left: 8%;  background: #a78bfa; animation-duration: 12s; animation-delay: 0s; }
+.particles span:nth-child(2) { width: 3px;  height: 3px;  left: 22%; background: #60a5fa; animation-duration: 15s; animation-delay: 3s; }
+.particles span:nth-child(3) { width: 7px;  height: 7px;  left: 38%; background: #c084fc; animation-duration: 10s; animation-delay: 6s; }
+.particles span:nth-child(4) { width: 4px;  height: 4px;  left: 54%; background: #818cf8; animation-duration: 14s; animation-delay: 1s; }
+.particles span:nth-child(5) { width: 6px;  height: 6px;  left: 68%; background: #a78bfa; animation-duration: 11s; animation-delay: 4s; }
+.particles span:nth-child(6) { width: 3px;  height: 3px;  left: 79%; background: #60a5fa; animation-duration: 16s; animation-delay: 2s; }
+.particles span:nth-child(7) { width: 5px;  height: 5px;  left: 88%; background: #c084fc; animation-duration: 13s; animation-delay: 7s; }
+.particles span:nth-child(8) { width: 4px;  height: 4px;  left: 4%;  background: #818cf8; animation-duration: 9s;  animation-delay: 5s; }
+
+@keyframes float-up {
+    0%   { transform: translateY(110vh) scale(0); opacity: 0; }
+    10%  { opacity: 0.7; }
+    90%  { opacity: 0.4; }
+    100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+/* ===== WRAPPER ===== */
+.wrapper {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+/* ===== PROFILE ===== */
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    animation: fade-down 0.8s ease both;
+}
+
+.avatar-ring {
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(135deg, #a78bfa, #60a5fa, #c084fc);
+    box-shadow: 0 0 28px var(--glow), 0 8px 28px var(--shadow);
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--bg);
+    transition: transform 0.4s ease;
+}
+
+.avatar-ring:hover .avatar {
+    transform: scale(1.06);
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #e8d5ff;
+    text-shadow: 0 0 20px rgba(167, 139, 250, 0.5);
+}
+
+.tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-style: italic;
+    letter-spacing: 0.02em;
+}
+
+/* ===== CARDS / LINKS ===== */
+.links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--surface);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 15px 20px;
+    text-decoration: none;
+    color: var(--text);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+
+    opacity: 0;
+    transform: translateY(16px);
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.11);
+    border-color: rgba(167, 139, 250, 0.55);
+    box-shadow: 0 8px 28px var(--shadow), 0 0 18px rgba(139, 92, 246, 0.2);
+}
+
+.card:active {
+    transform: translateY(-1px);
+}
+
+.card-inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--accent);
+    transition: color 0.25s ease;
+}
+
+.card:hover .icon {
+    color: var(--accent-2);
+}
+
+.card-text {
+    font-size: 0.97rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+.card-arrow {
+    font-size: 1rem;
+    color: var(--text-muted);
+    transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.card:hover .card-arrow {
+    transform: translateX(5px);
+    color: var(--accent);
+}
+
+/* ===== DIVIDER ===== */
+.links::after {
+    content: '· · ·';
+    display: block;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    margin-top: 4px;
+    opacity: 0.4;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    opacity: 0;
+    animation: fade-in 1s ease 1.4s both;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fade-down {
+    from { opacity: 0; transform: translateY(-18px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes slide-in {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.card.visible {
+    animation: slide-in 0.45s ease both;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+    .name { font-size: 1.9rem; }
+    .card { padding: 13px 16px; }
+    .avatar-ring { width: 92px; height: 92px; }
+}
